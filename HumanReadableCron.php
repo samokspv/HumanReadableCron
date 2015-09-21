@@ -137,7 +137,7 @@ class HumanReadableCron {
     }
     $cronDefaultArray = self::getCronDefaultArray();
     $cronArray = self::__humanReadableStringToArray($cron);
-    return array_merge($cronDefaultArray, $cronArray);
+    return array_merge($cronDefaultArray, (array)$cronArray);
   }
 
   /**
@@ -147,7 +147,7 @@ class HumanReadableCron {
    */
   private static function __humanReadableStringToArray($humanReadableString) {
     if (empty($humanReadableString) || !is_string($humanReadableString)) {
-      return false;
+      return $humanReadableString;
     }
     $humanReadableString = str_replace(
       array(
